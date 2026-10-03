@@ -3,9 +3,10 @@ import resList from "../utils/mockData";
 import { useState, useEffect } from "react";
 import Shimmer from "./Shimmer";
 import { Link } from "react-router-dom";
+import useOnlineStatus from "../utils/useOnlineStatus";
 const Body = () => {
   console.log(useState());
-  
+
   //local state variable - super powerful variable
   //normal js variable
   const arr = useState([]);
@@ -38,7 +39,10 @@ const Body = () => {
         ?.restaurants,
     );
   };
-
+  const OnlineStatus = useOnlineStatus();
+  if (OnlineStatus === false) {
+    return <h1>looks like you are offline !!! please check your internet</h1>;
+  }
   return listOfRestaurants.length === 0 ? (
     <Shimmer />
   ) : (
