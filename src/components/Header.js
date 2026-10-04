@@ -1,33 +1,41 @@
 import { LOGO_URL } from "../utils/constant";
-import { useState,useEffect } from "react";
+import { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import useOnlineStatus from "../utils/useOnlineStatus";
 
 const Header = () => {
-  const OnlineStatus = useOnlineStatus()
+  const OnlineStatus = useOnlineStatus();
   const [btnNameReact, setBtnNameReact] = useState("Login");
 
   // if no dependency array => useEffect is called on every render
   // if dependency is empty = [] => useEffect is called on initial render(just once)
   // if dependency array is [btnNameReact] => called everytime btnNameReact is updated
-  useEffect(()=>{
-    console.log("useEffect called")
-  },[btnNameReact])
+  useEffect(() => {
+    console.log("useEffect called");
+  }, [btnNameReact]);
   return (
-    <div className="header">
+    <div className="flex justify-between sm:bg-pink-300 bg-yellow-100 lg:bg-green-100 shadow-lg m-2 ">
       <div className="logo-container">
-        <img className="logo" src={LOGO_URL} />
+        <img className="w-56" src={LOGO_URL} />
       </div>
-      <div className="nav-items">
-        <ul>
-          <li>online status:{OnlineStatus ?"✅":"❌"} </li>
-          <li><Link to="/">Home</Link></li>
-          <li><Link to="/about">About us</Link></li>
-          <li><Link to="/contact">contact us</Link></li>
-          <li><Link to="/grocery">grocery</Link></li>
-          <li>cart</li>
-          <button
-            className="login"
+      <div className="flex items-center">
+        <ul className="flex p-4 m-4">
+          <li className="px-4">online status:{OnlineStatus ? "✅" : "❌"} </li>
+          <li className="px-4">
+            <Link to="/">Home</Link>
+          </li>
+          <li className="px-4">
+            <Link to="/about">About us</Link>
+          </li>
+          <li className="px-4">
+            <Link to="/contact">contact us</Link>
+          </li>
+          <li className="px-4">
+            <Link to="/grocery">grocery</Link>
+          </li>
+          <li className="px-4">cart</li>
+          <button 
+            className="px-4"
             onClick={() =>
               btnNameReact === "Login"
                 ? setBtnNameReact("Logout")
