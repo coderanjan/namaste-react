@@ -13,8 +13,6 @@ import appStore from "./utils/appStore";
 import Cart from "./components/Cart";
 import Footer from "./components/Footer";
 
-
-
 // import Grocery from "./components/Grocery";
 
 //chunking
@@ -37,17 +35,20 @@ const AppLayout = () => {
     setUserName(data.name);
   }, []);
   return (
-    <Provider store ={appStore}>
-    <UserContext.Provider value={{ loggedInUser: userName, setUserName }}>
-      <div className="app">
-        {/* Header */}
+    <Provider store={appStore}>
+      <UserContext.Provider value={{ loggedInUser: userName, setUserName }}>
+        <div className=" flex min-h-screen flex-col">
+          {/* Header */}
 
-        <Header />
+          <Header />
 
-        <Outlet />
-        <Footer />
-      </div>
-    </UserContext.Provider>
+          <main className="flex-1">
+            <Outlet />
+          </main>
+
+          <Footer />
+        </div>
+      </UserContext.Provider>
     </Provider>
   );
 };
@@ -69,9 +70,10 @@ const appRouter = createBrowserRouter([
       {
         path: "/restaurants/:resId",
         element: <RestaurantMenu />,
-      },{
-        path:'/cart',
-        element:<Cart/>
+      },
+      {
+        path: "/cart",
+        element: <Cart />,
       },
       {
         path: "/grocery",
