@@ -4,10 +4,10 @@ import { useState, useEffect, useContext } from "react";
 import Shimmer from "./Shimmer";
 import { Link } from "react-router-dom";
 import useOnlineStatus from "../utils/useOnlineStatus";
-import UserContext from "../utils/UserContext";
+// import UserContext from "../utils/UserContext";
 
 const Body = () => {
-  const {setUserName,loggedInUser} = useContext(UserContext)
+  // const {setUserName,loggedInUser} = useContext(UserContext)
   //local state variable - super powerful variable
   //normal js variable
   const arr = useState([]);
@@ -52,7 +52,7 @@ const Body = () => {
         <div className=" p-4 m-4">
           <input
             type="text"
-            className="border border-solid border-black"
+            className="border border-solid border-black p-2"
             value={searchText}
             onChange={(e) => {
               setSearchText(e.target.value);
@@ -60,7 +60,7 @@ const Body = () => {
             }}
           />
           <button
-            className="px-4 py-2 bg-green-100 m-4 rounded-2lg"
+            className="px-4 py-2 bg-green-100 m-4 rounded-2lg cursor-pointer"
             onClick={() => {
               // filter the restaurant cards and update the ui
 
@@ -76,7 +76,7 @@ const Body = () => {
         </div>
         <div className="m-4 p-4 flex items-center">
           <button
-            className="px-4 py-2 bg-gray-100 rounded-lg"
+            className="px-4 py-2 bg-gray-100 rounded-lg cursor-pointer"
             onClick={() => {
               //filter logic here
 
@@ -87,13 +87,13 @@ const Body = () => {
               console.log(listOfRestaurants);
             }}
           >
-            Top Rated Restaurants
+          Top Rated Restaurants
           </button>
         </div>
-        <div className="m-4 p-4 flex items-center">
+        {/* <div className="m-4 p-4 flex items-center">
           <label>UserName : </label>
           <input value={loggedInUser} onChange={(e)=> setUserName(e.target.value)} type="text" className="border border-black p-2" />
-        </div>
+        </div> */}
       </div>
 
       <div className="flex flex-wrap ">
